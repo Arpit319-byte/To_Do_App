@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Instant;
+
 @Entity
 public class ToDoItems {
 
@@ -16,5 +18,37 @@ public class ToDoItems {
     @Getter
     private Long id;
 
+    @Setter
+    @Getter
+    private String description;
 
+    @Setter
+    @Getter
+    private boolean isDone;
+
+    @Setter
+    @Getter
+    private Instant createdOn;
+
+    @Setter
+    @Getter
+    private Instant updatedOn;
+
+    public ToDoItems(String description){
+        this.description = description;
+        this.isDone = false;
+        this.createdOn = Instant.now();
+        this.updatedOn = Instant.now();
+    }
+
+    @Override
+    public String toString() {
+        return "ToDoItems{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", isDone=" + isDone +
+                ", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +
+                '}';
+    }
 }
